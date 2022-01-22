@@ -39,16 +39,20 @@ def getTitles(keywords, sUrl):
                     
     return currList
     
+def getTitleLink(item, url):
+        
+    feed = feedparser.parse(url)
     
-#while True:
-#
-#   listList = []
-#
-#    listList = getTitles([], 'https://www.is.fi/rss/tuoreimmat.xml')
-#    
-#    for i in range(5):
-#        print(listList[i] + '\n')
-#        
-#    print('\n\n')
-#              
-#    t.sleep(5)
+    string = item[0]
+    
+    for entry in feed.entries:
+    
+        if entry.title == string:
+            
+            print(entry.keys())
+            
+            return entry.link
+        
+    return 'Link was not found'
+        
+  

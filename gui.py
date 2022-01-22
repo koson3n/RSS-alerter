@@ -7,7 +7,7 @@ sg.theme('DarkAmber')
 
 tracking = False
 searchOn = sg.Text('Idle', background_color='Red')
-threadList = sg.Listbox([], size=(60,10))
+threadList = sg.Listbox([], size=(60,10), enable_events=True, key='-list-')
 titleList = []
 altList = []
 url = ''
@@ -67,7 +67,8 @@ while True:
         threadList.update([])
         
     if event == 'Info':
-        popup()
+        selected = window['-list-'].get()
+        popup(selected, values['siteUrl'])
         
           
     altList = getTitles(inputParser(values['input_words']), url)
