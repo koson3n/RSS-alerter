@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import time
 from feedhandler import *
+from inspectview import *
 
 sg.theme('DarkAmber')
 
@@ -18,7 +19,7 @@ layout = [
     [sg.InputText('', key='input_words')],
     [sg.Text('Threads that match the criteria')],
     [threadList],
-    [sg.Button('Track'), sg.Button('Untrack'), sg.Button('Close')],
+    [sg.Button('Track'), sg.Button('Untrack'), sg.Button('Close'), sg.Button('Info')],
     [searchOn]
 ]
 
@@ -64,6 +65,10 @@ while True:
         tracking = False
         searchOn.update('Idle', background_color='Red')
         threadList.update([])
+        
+    if event == 'Info':
+        popup()
+        
           
     altList = getTitles(inputParser(values['input_words']), url)
     
