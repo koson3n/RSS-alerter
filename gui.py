@@ -6,7 +6,7 @@ from inspectview import *
 sg.theme('DarkAmber')
 
 tracking = False
-searchOn = sg.Text('Idle', background_color='Red')
+searchOn = sg.Text('Idle', background_color='Red', pad=(20,10))
 threadList = sg.Listbox([], size=(60,10), enable_events=True, key='-list-')
 titleList = []
 altList = []
@@ -20,7 +20,7 @@ layout = [
     [sg.Text('Threads that match the criteria')],
     [threadList],
     [sg.Button('Track'), sg.Button('Untrack'), sg.Button('Close'), sg.Button('Info')],
-    [searchOn]
+    [searchOn, sg.Checkbox('Alerts', enable_events=True, pad=(40,10), key='-alerts-')]
 ]
 
 window = sg.Window('RSS Alerter', layout, size=(500, 400))
@@ -42,7 +42,8 @@ def updateList (originalList):
 
 def areThereNewTitles (list1, list2):
     if list1 != list2:
-        print('\a')
+        if values['-alerts-'] == True:
+            print('\a')
         return True
     return False
 
@@ -74,9 +75,15 @@ while True:
     altList = getTitles(inputParser(values['input_words']), url)
     
     if altList != titleList and tracking == True:
-        print('\a')
+    
+        if values['-alerts-'] == True:
+            print('\a')
+            
         titleList = altList
         threadList.update(titleList)
+        threadList = window['ListBox']
+        index = threadList.GetIndexes()[0]
+        threadList.Widget.itemconfig(index, fg='red', bg='green')
         
     window.refresh()
         
@@ -86,3 +93,5 @@ window.close()
 
 
 #is feed url -- https://www.is.fi/rss/tuoreimmat.xml
+
+#techbbs prossut linkki -- https://bbs.io-tech.fi/forums/prosessorit-emolevyt-ja-muistit.73/index.rss

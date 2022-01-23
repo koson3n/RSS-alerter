@@ -1,11 +1,18 @@
 import webbrowser
 import PySimpleGUI as sg
+import html2text
 from feedhandler import *
 
+def convertHtml(string):
+    tt = html2text.HTML2Text()
+    tt.ignore_links = True
+    tt.ignore_images = True
+    retrn = tt.handle(string)
+    return retrn
 
 def getInfo(itemTitle, feedUrl):
-    linkToItem = getTitleLink(itemTitle, feedUrl)
-    return linkToItem
+    infoList = getAllInfo(itemTitle, feedUrl)
+    return infoList
     
 def openLink(url):
     webbrowser.open(url)
@@ -13,16 +20,18 @@ def openLink(url):
 def popup(item, url):
     sg.theme('DarkAmber')
     
-    link = getInfo(item, url)
+    infoList = getInfo(item, url)
     
     layout = [
-        [sg.Text('Link to the item: ' + link, enable_events=True, key='-link-', pad=(5,5))],
-        [sg.Text()],
-        [sg.Text()],
+        [sg.Text('Link: ', font=('bold'), text_color='White'), sg.Text(infoList[0], pad=(5,5)), sg.Button('Visit')],
+        [sg.Text('Item title: ', font=('bold'), text_color='White'), sg.Text(infoList[1])],
+        [sg.Text('Published: ', font=('bold'), text_color='White'), sg.Text(infoList[2])],
+        [sg.Text('Summary: ', font=('bold'), text_color='White')],
+        [sg.Multiline(convertHtml(infoList[3]), size=(70, 10))], 
         [sg.Button('Close')]
     ]
 
-    window = sg.Window('Inspect', layout, size=(400, 300))
+    window = sg.Window('Inspect', layout, size=(500, 350))
 
     while True:
         event, values = window.Read(timeout=100)
@@ -30,7 +39,7 @@ def popup(item, url):
         if event == 'Close' or event == sg.WIN_CLOSED:
             break
 
-        if event == '-link-':
-            openLink(link)
+        if event == 'Visit':
+            openLink(infoList[0])
             
     window.close()

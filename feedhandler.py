@@ -39,7 +39,7 @@ def getTitles(keywords, sUrl):
                     
     return currList
     
-def getTitleLink(item, url):
+def getAllInfo(item, url):
         
     feed = feedparser.parse(url)
     
@@ -49,10 +49,10 @@ def getTitleLink(item, url):
     
         if entry.title == string:
             
-            print(entry.keys())
-            
-            return entry.link
+            infoList = [entry.link, entry.title, entry.published, entry.summary]
+  
+            return infoList
         
-    return 'Link was not found'
+    return []
         
   
