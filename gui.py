@@ -23,7 +23,7 @@ layout = [
     [searchOn, sg.Checkbox('Alerts', enable_events=True, pad=(40,10), key='-alerts-')]
 ]
 
-window = sg.Window('RSS Alerter', layout, size=(500, 400))
+window = sg.Window('RSS Alerter', layout, size=(500, 400), icon='Img/icon.png')
 window.finalize()
 
 def inputParser (input):
