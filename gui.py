@@ -94,6 +94,6 @@ while True:
 window.close()
 
 
-#FINNISH RSS FEEDS FOR TESTING PURPOSES LINKED BELOW
+#some rss feeds for testing
 #news feed url -- https://www.is.fi/rss/tuoreimmat.xml
 #techbbs -- https://bbs.io-tech.fi/forums/prosessorit-emolevyt-ja-muistit.73/index.rss
