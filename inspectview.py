@@ -39,7 +39,7 @@ def popup(item, url):
     window = sg.Window('Inspect', layout, size=(500, 350))
 
     while True:
-        event, values = window.Read(timeout=100)
+        event, values = window.Read(timeout=500)
 
         if event == 'Close' or event == sg.WIN_CLOSED:
             break
