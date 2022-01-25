@@ -26,7 +26,7 @@ layout = [
     [threadList],
     [trackbtn, untrackbtn, sg.Button('Info') , sg.Button('Exit')],
     [searchOn, sg.Checkbox('Alerts', enable_events=True, pad=(40,10), key='-alerts-')],
-    [sg.Text('Made by Joonas Lahtinen - Source code available at GitHub', font=('Any 9'), text_color='gray')]
+    [sg.Text('Made by Joopajoonas - Source code available at GitHub', font=('Any 7'), text_color='gray')]
 ]
 
 window = sg.Window('RSS Alerter', layout, size=(500, 425), icon='icon.ico', finalize=True)
@@ -39,7 +39,7 @@ def inputParser (input):
 
 #Main program loop. When broken -> program is terminated
 while True:
-    event, values = window.read()
+    event, values = window.Read(timeout=400)
     
     if event == 'Exit' or event == sg.WIN_CLOSED:
         break
@@ -73,7 +73,7 @@ while True:
         except:
             print('No item selected')
         
-          
+        
     altList = getTitles(inputParser(values['input_words']), url, values['-case-sensitive-'])
     
     if altList != titleList and tracking == True:
