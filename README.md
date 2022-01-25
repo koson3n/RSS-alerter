@@ -17,3 +17,10 @@ This program was made for the sole purpose of being able to receive instant aler
   development for a bit longer and make couple of more functionalities so it would be 
   easier to continue its development.
   
+  
+Changelog
+----------
+Version 0.6
+============
+- Added error messages for bad url'setup
+- Few bugs fixed

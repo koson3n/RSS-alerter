@@ -12,7 +12,6 @@ def getTitles(keywords, sUrl, sensitive):
     
     alert = False
     
-    #url = "https://bbs.io-tech.fi/forums/prosessorit-emolevyt-ja-muistit.73/index.rss"
     url = sUrl
         
     feed = feedparser.parse(url)
