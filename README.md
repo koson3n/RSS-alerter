@@ -22,5 +22,5 @@ Changelog
 ----------
 Version 0.6
 ============
-- Added error messages for bad url'setup
+- Added error messages for bad url's
 - Few bugs fixed
