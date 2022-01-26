@@ -15,6 +15,8 @@ browser bloatware solutions and for those who want to look over the code before 
 software. You can of course clone this repo and make the program work in the way you want to 
 if you feel the need.
 
+![Preview picture](preview.png)
+
 
 Purpose of this program
 ------------------------
