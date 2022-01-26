@@ -7,6 +7,14 @@ Development environment setup
 - also pip installations of at least html2text, PySimpleGui and feedparser
 - Once you have all the needed libraries installed just run the gui.py file
 
+What is RSS Alerter?
+---------------------
+It is a simple software to keep you updated of your favourite forum, news site or blog.
+Basically anything that has or can be made to .rss feed. This is for those who don't like 
+browser bloatware solutions and for those who want to look over the code before installing 
+software. You can of course clone this repo and make the program work in the way you want to 
+if you feel the need.
+
 
 Purpose of this program
 ------------------------
