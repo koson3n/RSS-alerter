@@ -23,8 +23,8 @@ def openLink(url):
 #opens popup window that contains info about feed item of users choice.
 #window closes when after this function
 def popup(item, url):
+
     sg.theme('DarkAmber')
-    
     infoList = getInfo(item, url)
     
     layout = [

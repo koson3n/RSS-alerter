@@ -108,8 +108,3 @@ while True:
     window.refresh()
     
 window.close()
-
-
-#some rss feeds for testing
-#news feed url -- https://www.is.fi/rss/tuoreimmat.xml
-#techbbs -- https://bbs.io-tech.fi/forums/prosessorit-emolevyt-ja-muistit.73/index.rss

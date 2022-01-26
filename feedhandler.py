@@ -10,43 +10,27 @@ def search(list, platform):
 #Main logical function that return filtered or non filtered list of feed items
 def getTitles(keywords, sUrl, sensitive):
     
-    alert = False
-    
-    url = sUrl
-        
+    alert = False   
+    url = sUrl     
     feed = feedparser.parse(url)
-
     currList = []
 
     if len(keywords) > 0 and sensitive == True:
-    
-        for entry in feed.entries:
-            
-            for word in keywords:
-                
+        for entry in feed.entries:  
+            for word in keywords: 
                 if entry.title.find(word) >= 0:
-                
                     if search(currList, entry.title) == False:
-                    
                         currList.append(entry.title)
     
     elif len(keywords) > 0 and sensitive == False:
-    
-        for entry in feed.entries:
-            
-            for word in keywords:
-                                
-                if entry.title.lower().find(word.lower()) >= 0:
-                
-                    if search(currList, entry.title) == False:
-                    
+        for entry in feed.entries: 
+            for word in keywords:                   
+                if entry.title.lower().find(word.lower()) >= 0:              
+                    if search(currList, entry.title) == False:                   
                         currList.append(entry.title)
     else:
-    
-        for entry in feed.entries:
-            
-            if search(currList, entry.title) == False:
-                    
+        for entry in feed.entries:            
+            if search(currList, entry.title) == False:                    
                 currList.append(entry.title)
                     
     return currList
@@ -54,18 +38,13 @@ def getTitles(keywords, sUrl, sensitive):
 #returns all kinds of info about feed item. commonly available in most rss feeds
 def getAllInfo(item, url):
         
-    feed = feedparser.parse(url)
-    
+    feed = feedparser.parse(url)  
     string = item[0]
     
-    for entry in feed.entries:
-    
-        if entry.title == string:
-            
+    for entry in feed.entries:    
+        if entry.title == string:         
             infoList = [entry.link, entry.title, entry.published, entry.summary]
-  
-            return infoList
-        
+            return infoList       
     return []
         
   
